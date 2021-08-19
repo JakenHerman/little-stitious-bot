@@ -1,1 +1,1 @@
-web: pipenv run python __init__.py
+web: pipenv install & pipenv run python __init__.py
