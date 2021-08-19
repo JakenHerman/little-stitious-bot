@@ -5,10 +5,10 @@ import time
 def login():
   return praw.Reddit(
     username = os.getenv('REDDIT_USERNAME'),
-				password = os.getenv('REDDIT_PASSWORD'),
-				client_id = os.getenv('API_CLIENT'),
-				client_secret = os.getenv('API_SECRET'),
-				user_agent = "Little Stitious Bot"
+		password = os.getenv('REDDIT_PASSWORD'),
+		client_id = os.getenv('API_CLIENT'),
+		client_secret = os.getenv('API_SECRET'),
+		user_agent = "Little Stitious Bot"
   )
 
 def read_comments(reddit, comments_already_responded_to):
