@@ -1,0 +1,1 @@
+web: pipenv run python __init__.py
