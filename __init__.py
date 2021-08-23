@@ -7,7 +7,7 @@ from firebase_admin import firestore
 def read_comments(reddit, comments_already_responded_to, db):
   for comment in reddit.subreddit('dundermifflin').comments(limit=1000):
     if "superstitious" in comment.body.lower() and comment.id not in comments_already_responded_to and comment.author != reddit.user.me():
-      # comment.reply("I'm not superstitious, but I am a little stitious.")
+      comment.reply("I'm not superstitious, but I am a little stitious.")
       doc_ref = db.collection(u'comment_ids').document(comment.id)
       doc_ref.set({
           u'body': comment.body
