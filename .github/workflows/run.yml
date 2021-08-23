@@ -12,4 +12,4 @@ jobs:
         env:
           REDDIT_USERNAME = ${{ secrets.REDDIT_USERNAME }}
         run: |
-          echo REDDIT_USERNAME
+          echo "$REDDIT_USERNAME"
