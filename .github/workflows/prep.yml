@@ -13,11 +13,11 @@ jobs:
 
     steps:
     - shell: bash
-        env:
-          "REDDIT_USERNAME" : ${{ secrets.REDDIT_USERNAME }}
-          "REDDIT_PASSWORD" : ${{ secrets.REDDIT_PASSWORD }}
-          "API_SECRET" : ${{ secrets.API_SECRET }}
-          "API_CLIENT" : ${{ secrets.API_CLIENT }}
+      env:
+        "REDDIT_USERNAME" : ${{ secrets.REDDIT_USERNAME }}
+        "REDDIT_PASSWORD" : ${{ secrets.REDDIT_PASSWORD }}
+        "API_SECRET" : ${{ secrets.API_SECRET }}
+        "API_CLIENT" : ${{ secrets.API_CLIENT }}
     - uses: actions/checkout@v2
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
