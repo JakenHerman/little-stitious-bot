@@ -10,6 +10,6 @@ jobs:
     steps:
       - shell: bash
         env:
-          REDDIT_USERNAME = ${{ secrets.REDDIT_USERNAME }}
+          "REDDIT_USERNAME" : ${{ secrets.REDDIT_USERNAME }}
         run: |
           echo "$REDDIT_USERNAME"
