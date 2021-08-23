@@ -12,12 +12,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - shell: bash
-      env:
-        "REDDIT_USERNAME" : ${{ secrets.REDDIT_USERNAME }}
-        "REDDIT_PASSWORD" : ${{ secrets.REDDIT_PASSWORD }}
-        "API_SECRET" : ${{ secrets.API_SECRET }}
-        "API_CLIENT" : ${{ secrets.API_CLIENT }}
     - uses: actions/checkout@v2
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
@@ -31,5 +25,11 @@ jobs:
       run: |
         pipenv install
     - name: Run bot
+      shell: bash
+      env:
+        "REDDIT_USERNAME" : ${{ secrets.REDDIT_USERNAME }}
+        "REDDIT_PASSWORD" : ${{ secrets.REDDIT_PASSWORD }}
+        "API_SECRET" : ${{ secrets.API_SECRET }}
+        "API_CLIENT" : ${{ secrets.API_CLIENT }}
       run: |
         pipenv run python __init__.py
