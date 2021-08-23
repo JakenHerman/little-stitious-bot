@@ -11,5 +11,8 @@ jobs:
       - shell: bash
         env:
           "REDDIT_USERNAME" : ${{ secrets.REDDIT_USERNAME }}
+          "REDDIT_PASSWORD" : ${{ secrets.REDDIT_PASSWORD }}
+          "API_SECRET" : ${{ secrets.API_SECRET }}
+          "API_CLIENT" : ${{ secrets.API_CLIENT }}
         run: |
-          echo "$REDDIT_USERNAME"
+          pipenv run python __init__.py
