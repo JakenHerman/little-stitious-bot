@@ -24,14 +24,14 @@ jobs:
         pipenv install
     - name: Set Env Variables
       run: |
-        REDDIT_USERNAME = ${{ secrets.REDDIT_USERNAME }}
-        REDDIT_PASSWORD = ${{ secrets.REDDIT_PASSWORD }}
-        API_SECRET = ${{ secrets.API_SECRET }}
-        API_CLIENT = ${{ secrets.API_CLIENT }}
-        FIREBASE_PRIVATE_KEY = ${{ secrets.FIREBASE_PRIVATE_KEY }}
-        FIREBASE_PRIVATE_KEY_ID = ${{ secrets.FIREBASE_PRIVATE_KEY_ID }}
-        FIREBASE_CLIENT_EMAIL = ${{ secrets.FIREBASE_CLIENT_EMAIL }}
-        FIREBASE_CLIENT_ID = ${{ secrets.FIREBASE_CLIENT_ID }}
+        REDDIT_USERNAME=${{ secrets.REDDIT_USERNAME }}
+        REDDIT_PASSWORD=${{ secrets.REDDIT_PASSWORD }}
+        API_SECRET=${{ secrets.API_SECRET }}
+        API_CLIENT=${{ secrets.API_CLIENT }}
+        FIREBASE_PRIVATE_KEY=${{ secrets.FIREBASE_PRIVATE_KEY }}
+        FIREBASE_PRIVATE_KEY_ID=${{ secrets.FIREBASE_PRIVATE_KEY_ID }}
+        FIREBASE_CLIENT_EMAIL=${{ secrets.FIREBASE_CLIENT_EMAIL }}
+        FIREBASE_CLIENT_ID=${{ secrets.FIREBASE_CLIENT_ID }}
     - name: Run bot
       run: |
         pipenv run python __init__.py
