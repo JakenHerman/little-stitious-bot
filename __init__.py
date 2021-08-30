@@ -26,7 +26,7 @@ cred = credentials.Certificate({
   "type": "service_account",
   "project_id": "lilstitiousbot",
   "private_key_id": os.environ.get('FIREBASE_PRIVATE_KEY_ID'),
-  "private_key": os.environ.get('FIREBASE_PRIVATE_KEY').replace('\\n', '\n'),
+  "private_key": os.environ.get('FIREBASE_PRIVATE_KEY').replace('\\n', '\n') if os.environ.get('FIREBASE_PRIVATE_KEY') is not None else os.error('Actions does not have key access'),
   "client_email": os.environ.get('FIREBASE_CLIENT_EMAIL'),
   "client_id": os.environ.get('FIREBASE_CLIENT_ID'),
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
