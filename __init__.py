@@ -7,17 +7,17 @@ from firebase_admin import firestore
 def read_comments(reddit, comments_already_responded_to, db):
   for comment in reddit.subreddit('dundermifflin').comments(limit=1000):
     if "superstitious" in comment.body.lower() and comment.id not in comments_already_responded_to and comment.author != reddit.user.me():
-      # comment.reply("I'm not superstitious, but I am a little stitious.")
+      comment.reply("I'm not superstitious, but I am a little stitious.")
       doc_ref = db.collection(u'comment_ids').document(comment.id)
       doc_ref.set({
           u'body': comment.body
       })
   
 reddit = praw.Reddit(
-    username = os.getenv('REDDIT_USERNAME'),
-		password = os.getenv('REDDIT_PASSWORD'),
-		client_id = os.getenv('API_CLIENT'),
-		client_secret = os.getenv('API_SECRET'),
+    username = os.environ.get('REDDIT_USERNAME'),
+		password = os.environ.get('REDDIT_PASSWORD'),
+		client_id = os.environ.get('API_CLIENT'),
+		client_secret = os.environ.get('API_SECRET'),
 		user_agent = "Little Stitious Bot"
   )
 
@@ -25,10 +25,10 @@ reddit = praw.Reddit(
 cred = credentials.Certificate({
   "type": "service_account",
   "project_id": "lilstitiousbot",
-  "private_key_id": os.getenv('FIREBASE_PRIVATE_KEY_ID'),
-  "private_key": os.getenv('FIREBASE_PRIVATE_KEY').replace('\\n', '\n'),
-  "client_email": os.getenv('FIREBASE_CLIENT_EMAIL'),
-  "client_id": os.getenv('FIREBASE_CLIENT_ID'),
+  "private_key_id": os.environ.get('FIREBASE_PRIVATE_KEY_ID'),
+  "private_key": "-----BEGIN PRIVATE KEY-----\n" + os.environ.get('FIREBASE_PRIVATE_KEY').replace('\\n', '\n') + "\n-----END PRIVATE KEY-----\n",
+  "client_email": os.environ.get('FIREBASE_CLIENT_EMAIL'),
+  "client_id": os.environ.get('FIREBASE_CLIENT_ID'),
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
   "token_uri": "https://oauth2.googleapis.com/token",
   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
