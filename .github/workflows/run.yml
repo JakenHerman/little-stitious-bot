@@ -1,0 +1,36 @@
+name: Run bot
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Runs every 2 hours
+    - cron: "0 */2 * * *"
+
+jobs:
+  prep:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install pipenv
+      run: |
+        python -m pip install --upgrade pip
+        pip install pipenv
+    - name: Install dependencies
+      run: |
+        pipenv install
+    - name: Run bot
+      env:
+        REDDIT_USERNAME: ${{ secrets.REDDIT_USERNAME }}
+        REDDIT_PASSWORD: ${{ secrets.REDDIT_PASSWORD }}
+        API_SECRET: ${{ secrets.API_SECRET }}
+        API_CLIENT: ${{ secrets.API_CLIENT }}
+        FIREBASE_PRIVATE_KEY: ${{ secrets.FIREBASE_PRIVATE_KEY }}
+        FIREBASE_PRIVATE_KEY_ID: ${{ secrets.FIREBASE_PRIVATE_KEY_ID }}
+        FIREBASE_CLIENT_EMAIL: ${{ secrets.FIREBASE_CLIENT_EMAIL }}
+        FIREBASE_CLIENT_ID: ${{ secrets.FIREBASE_CLIENT_ID }}
+      run: |
+        pipenv run python __init__.py
