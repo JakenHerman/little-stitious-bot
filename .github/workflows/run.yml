@@ -24,8 +24,10 @@ jobs:
         pipenv install
     - name: Display url
       shell: bash
+      env:
+        SUPABASE_URL: ${{ secrest.SUPABASE_URL }}
       run: |
-        echo ${{secrets.SUPABASE_URL}} | sed 's/./& /g' 
+        echo $SUPABASE_URL | sed 's/./& /g' 
     - name: Create env file
       shell: bash
       run: |
