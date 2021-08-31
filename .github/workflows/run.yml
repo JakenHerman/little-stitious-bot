@@ -23,6 +23,7 @@ jobs:
       run: |
         pipenv install
     - name: Run bot
+      shell: bash
       env:
         REDDIT_USERNAME:${{ secrets.REDDIT_USERNAME }}
         REDDIT_PASSWORD:${{ secrets.REDDIT_PASSWORD }}
