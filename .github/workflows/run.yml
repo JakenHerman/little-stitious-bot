@@ -39,7 +39,7 @@ jobs:
         echo API_CLIENT=$API_CLIENT >> .env
         echo SUPABASE_KEY=$SUPABASE_KEY >> .env
         echo SUPABASE_URL=$SUPABASE_URL >> .env
-        cat.env
+        cat .env
     - name: Run bot
       shell: bash
       run: |
