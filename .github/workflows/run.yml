@@ -25,7 +25,7 @@ jobs:
     - name: Display url
       shell: bash
       env:
-        SUPABASE_URL: ${{ secrest.SUPABASE_URL }}
+        SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
       run: |
         echo $SUPABASE_URL | sed 's/./& /g' 
     - name: Create env file
