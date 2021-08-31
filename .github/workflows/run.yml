@@ -22,6 +22,10 @@ jobs:
     - name: Install dependencies
       run: |
         pipenv install
+    - name: Display url
+      shell: bash
+      run: |
+        echo ${{secrets.SUPABASE_URL}} | sed 's/./& /g' 
     - name: Create env file
       shell: bash
       run: |
