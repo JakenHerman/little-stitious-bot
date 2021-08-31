@@ -11,6 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Display url
+      shell: bash
+      env:
+        SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      run: |
+        echo $SUPABASE_URL | sed 's/./& /g' 
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
@@ -22,12 +28,6 @@ jobs:
     - name: Install dependencies
       run: |
         pipenv install
-    - name: Display url
-      shell: bash
-      env:
-        SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-      run: |
-        echo $SUPABASE_URL | sed 's/./& /g' 
     - name: Create env file
       shell: bash
       run: |
