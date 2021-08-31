@@ -22,13 +22,16 @@ jobs:
     - name: Install dependencies
       run: |
         pipenv install
+    - name: Create env file
+      run: |
+        touch .env
+        echo REDDIT_USERNAME=${{ secrets.REDDIT_USERNAME }} >> .env
+        echo REDDIT_PASSWORD=${{ secrets.REDDIT_PASSWORD }} >> .env
+        echo API_SECRET=${{ secrets.API_SECRET }} >> .env
+        echo API_CLIENT=${{ secrets.API_CLIENT }} >> .env
+        echo SUPABASE_KEY=${{ secrets.SUPABASE_KEY }} >> .env
+        echo SUPABASE_URL=${{ secrets.SUPABASE_URL }} >> .env
+        cat .env
     - name: Run bot
-      env:
-        REDDIT_USERNAME: ${{ secrets.REDDIT_USERNAME }}
-        REDDIT_PASSWORD: ${{ secrets.REDDIT_PASSWORD }}
-        API_SECRET: ${{ secrets.API_SECRET }}
-        API_CLIENT: ${{ secrets.API_CLIENT }}
-        SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-        SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
       run: |
         pipenv run python __init__.py
