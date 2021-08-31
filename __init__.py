@@ -26,7 +26,7 @@ cred = credentials.Certificate({
   "type": "service_account",
   "project_id": "lilstitiousbot",
   "private_key_id": os.environ.get('FIREBASE_PRIVATE_KEY_ID'),
-  "private_key": "-----BEGIN PRIVATE KEY-----\n" + os.environ.get('FIREBASE_PRIVATE_KEY').replace('\\n', '\n') + "\n-----END PRIVATE KEY-----\n",
+  "private_key": str("-----BEGIN PRIVATE KEY-----\n" + str(os.environ.get('FIREBASE_PRIVATE_KEY').replace('\\n', '\n')) + "\n-----END PRIVATE KEY-----\n"),
   "client_email": os.environ.get('FIREBASE_CLIENT_EMAIL'),
   "client_id": os.environ.get('FIREBASE_CLIENT_ID'),
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
