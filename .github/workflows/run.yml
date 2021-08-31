@@ -23,6 +23,7 @@ jobs:
       run: |
         pipenv install
     - name: Create env file
+      shell: bash
       run: |
         touch .env
         echo REDDIT_USERNAME=${{ secrets.REDDIT_USERNAME }} >> .env
@@ -33,5 +34,6 @@ jobs:
         echo SUPABASE_URL=${{ secrets.SUPABASE_URL }} >> .env
         cat .env
     - name: Run bot
+      shell: bash
       run: |
         pipenv run python __init__.py
