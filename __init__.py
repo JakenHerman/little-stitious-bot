@@ -15,7 +15,7 @@ def read_comments():
   key: str = os.environ.get("SUPABASE_KEY")
   supabase: Client = create_client(url, key)
   comments = supabase.table("comment_ids").select("*").execute()
-  comments_already_responded_to = [comment.id for comment in comments.get("data", [])]
+  comments_already_responded_to = [comment['id'] for comment in comments.get("data", [])]
 
   for comment in reddit.subreddit('dundermifflin').comments(limit=100000):
     if "superstitious" in comment.body.lower() and comment.id not in comments_already_responded_to and comment.author != reddit.user.me():
